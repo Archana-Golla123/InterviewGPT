@@ -1,14 +1,18 @@
 import os
 from groq import Groq
+from dotenv import load_dotenv
+
+load_dotenv()
 
 client = Groq(
     api_key=os.getenv("GROQ_API_KEY")
 )
 
+
 def evaluate_answer(question, answer):
 
     prompt = f"""
-You are a Senior Technical Interviewer.
+You are an AI interviewer.
 
 Interview Question:
 {question}
@@ -16,15 +20,25 @@ Interview Question:
 Candidate Answer:
 {answer}
 
-Evaluate the answer and provide:
+Evaluate the candidate's answer.
 
-1. Technical Score (out of 10)
-2. Communication Score (out of 10)
-3. Strengths
-4. Weaknesses
-5. Missing Concepts
-6. Improved Answer
-7. Final Recommendation
+Provide:
 
-Provide detailed feedback.
+1. Score out of 10
+2. Strengths
+3. Weaknesses
+4. Suggestions for improvement
 """
+
+    response = client.chat.completions.create(
+        model="llama-3.3-70b-versatile",
+        messages=[
+            {
+                "role": "user",
+                "content": prompt
+            }
+        ],
+        temperature=0.3
+    )
+
+    return response.choices[0].message.content
