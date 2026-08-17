@@ -7,7 +7,7 @@ InterviewGPT is an AI-powered interview preparation platform that helps candidat
 ## 🚀 Live Demo
 
 🌐 **Live Application:**  
-https://interviewgpt-d2r5wvz3nqnozvbxentprz.streamlit.app
+https://interviewgpt-zktv3wbzprewgss8kxmsfi.streamlit.app/
 
 💻 **GitHub Repository:**  
 https://github.com/Archana-Golla123/InterviewGPT
